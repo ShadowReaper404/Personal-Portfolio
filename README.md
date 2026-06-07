@@ -29,4 +29,4 @@ Personal website built with [Astro](https://astro.build). Static site deployed o
 
 ## Deploy
 
-Push to `main` — GitHub Actions builds and deploys to GitHub Pages at `/personal-website/`.
+Push to `main` — GitHub Actions builds and deploys to GitHub Pages at `/Personal-Portfolio/`.
