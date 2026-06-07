@@ -1,37 +1,78 @@
 ---
-
-const roles = ["Software Engineer", "UI Architect", "Problem Solver", "Open Source Contributor"];
+const roles = ["CS Undergraduate", "Full-Stack Developer", "UI Designer", "Tech Enthusiast"];
 ---
 
 <section class="hero" id="hero">
   <canvas id="particleCanvas" class="particle-canvas"></canvas>
-  <div class="container hero-content">
-    <div class="hero-badge reveal">Available for opportunities</div>
-    <h1 class="hero-name reveal reveal-delay-1">
-      Thevindu<br />
-      <span class="gradient-text">Sithujaya</span>
-    </h1>
-    <p class="hero-title reveal reveal-delay-2">
-      <span class="typing-wrapper">
-        <span class="typing-text" id="typingText"></span>
-        <span class="typing-cursor">|</span>
-      </span>
-    </p>
-    <p class="hero-desc reveal reveal-delay-3">
-      Computer Science undergraduate passionate about building performant, human-centered digital experiences. From full-stack apps to elegant interfaces — I turn ideas into reality.
-    </p>
-    <div class="hero-cta reveal reveal-delay-4">
-      <a href="#projects" class="btn btn-primary">
-        View my work
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
-      </a>
-      <a href="#contact" class="btn btn-outline">Get in touch</a>
+
+  <div class="hero-shapes" aria-hidden="true">
+    <div class="hero-shape hero-shape-1"></div>
+    <div class="hero-shape hero-shape-2"></div>
+    <div class="hero-shape hero-shape-3"></div>
+    <div class="hero-shape hero-shape-4"></div>
+  </div>
+
+  <div class="hero-cursor-glow" id="cursorGlow"></div>
+
+  <div class="hero-tilt" id="heroTilt">
+    <div class="container hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        Available for opportunities
+      </div>
+
+      <h1 class="hero-name reveal reveal-delay-1">
+        <span class="hero-greeting">Hi, I'm</span>
+        <span class="hero-name-line">
+          Thevindu
+          <span class="gradient-text">Sithujaya</span>
+        </span>
+      </h1>
+
+      <p class="hero-title reveal reveal-delay-2">
+        <span class="typing-wrapper">
+          <span class="typing-text" id="typingText"></span>
+          <span class="typing-cursor">|</span>
+        </span>
+      </p>
+
+      <p class="hero-desc reveal reveal-delay-3">
+        Computer Science undergraduate passionate about building performant, human-centered digital experiences. From full-stack apps to elegant interfaces — I turn ideas into reality.
+      </p>
+
+      <div class="hero-cta reveal reveal-delay-4">
+        <a href="#projects" class="btn btn-primary magnetic-btn">
+          <span class="btn-text">View my work</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-outline magnetic-btn">
+          <span class="btn-text">Get in touch</span>
+        </a>
+      </div>
+
+      <div class="hero-stats reveal reveal-delay-4" id="heroStats">
+        <div class="stat">
+          <span class="stat-num"><span class="stat-counter" data-target="2">0</span>+</span>
+          <span class="stat-label">Degrees in Progress</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><span class="stat-counter" data-target="7">0</span>+</span>
+          <span class="stat-label">Projects Built</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><span class="stat-counter" data-target="5">0</span></span>
+          <span class="stat-label">Certifications</span>
+        </div>
+      </div>
     </div>
-    <div class="hero-stats reveal reveal-delay-4">
-      <div class="stat"><span class="stat-num">2</span><span class="stat-label">Degrees in Progress</span></div>
-      <div class="stat"><span class="stat-num">7+</span><span class="stat-label">Projects Built</span></div>
-      <div class="stat"><span class="stat-num">5</span><span class="stat-label">Certifications</span></div>
-    </div>
+  </div>
+
+  <div class="scroll-indicator" id="scrollIndicator">
+    <span class="scroll-text">Scroll</span>
+    <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+      <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <circle cx="8" cy="7" r="2" fill="currentColor" class="scroll-dot"/>
+    </svg>
   </div>
 </section>
 
@@ -52,35 +93,149 @@ const roles = ["Software Engineer", "UI Architect", "Problem Solver", "Open Sour
     z-index: 0;
   }
 
-  .hero-content {
+  .hero-cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(20, 184, 166, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s;
+    opacity: 0;
+  }
+
+  .hero-tilt {
     position: relative;
     z-index: 1;
+    width: 100%;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .hero-content {
     padding-top: 80px;
+    transform-style: preserve-3d;
+  }
+
+  .hero-content > * {
+    transform-style: preserve-3d;
+  }
+
+  .hero-content .reveal-delay-1 { transform: translateZ(20px); }
+  .hero-content .reveal-delay-2 { transform: translateZ(40px); }
+  .hero-content .reveal-delay-3 { transform: translateZ(30px); }
+  .hero-content .reveal-delay-4 { transform: translateZ(50px); }
+
+  .hero-shapes {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.12;
+    will-change: transform;
+  }
+
+  .hero-shape-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    top: -150px;
+    right: -100px;
+    animation: float-shape 12s ease-in-out infinite;
+  }
+
+  .hero-shape-2 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);
+    bottom: -80px;
+    left: -80px;
+    animation: float-shape 15s ease-in-out infinite reverse;
+  }
+
+  .hero-shape-3 {
+    width: 200px;
+    height: 200px;
+    border: 1px solid var(--accent);
+    border-radius: 0;
+    transform: rotate(45deg);
+    top: 30%;
+    left: 5%;
+    opacity: 0.06;
+    animation: float-shape 18s ease-in-out infinite;
+  }
+
+  .hero-shape-4 {
+    width: 120px;
+    height: 120px;
+    border: 1px solid var(--accent-secondary);
+    border-radius: 0;
+    transform: rotate(45deg);
+    bottom: 25%;
+    right: 10%;
+    opacity: 0.05;
+    animation: float-shape 14s ease-in-out infinite reverse;
+  }
+
+  @keyframes float-shape {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    25% { transform: translate(30px, -40px) rotate(3deg) scale(1.05); }
+    50% { transform: translate(-20px, 20px) rotate(-2deg) scale(0.95); }
+    75% { transform: translate(15px, 30px) rotate(2deg) scale(1.02); }
+  }
+
+  @keyframes float-shape-square {
+    0%, 100% { transform: translate(0, 0) rotate(45deg) scale(1); }
+    25% { transform: translate(25px, -30px) rotate(55deg) scale(1.05); }
+    50% { transform: translate(-15px, 15px) rotate(35deg) scale(0.95); }
+    75% { transform: translate(10px, 25px) rotate(50deg) scale(1.02); }
+  }
+
+  .hero-shape-3, .hero-shape-4 {
+    animation-name: float-shape-square;
   }
 
   .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--accent);
-    padding: 6px 16px;
+    padding: 8px 20px;
     border-radius: var(--radius-full);
     border: 1px solid rgba(20, 184, 166, 0.2);
     background: rgba(20, 184, 166, 0.06);
     margin-bottom: 32px;
+    backdrop-filter: blur(4px);
   }
 
-  .hero-badge::before {
-    content: "";
+  .badge-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background: var(--accent);
     animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .hero-greeting {
+    display: block;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
   }
 
   .hero-name {
@@ -91,11 +246,15 @@ const roles = ["Software Engineer", "UI Architect", "Problem Solver", "Open Sour
     margin-bottom: 24px;
   }
 
+  .hero-name-line {
+    display: block;
+  }
+
   .hero-title {
     font-size: 1.2rem;
     color: var(--text-muted);
     margin-bottom: 20px;
-    min-height: 1.8em;
+    min-height: 2em;
   }
 
   .typing-wrapper {
@@ -125,6 +284,17 @@ const roles = ["Software Engineer", "UI Architect", "Problem Solver", "Open Sour
     margin-bottom: 60px;
   }
 
+  .magnetic-btn {
+    position: relative;
+    transition: transform 0.15s ease;
+    will-change: transform;
+  }
+
+  .magnetic-btn .btn-text {
+    position: relative;
+    z-index: 1;
+  }
+
   .hero-stats {
     display: flex;
     gap: 48px;
@@ -150,10 +320,47 @@ const roles = ["Software Engineer", "UI Architect", "Problem Solver", "Open Sour
     letter-spacing: 0.05em;
   }
 
+  .scroll-indicator {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    opacity: 0.5;
+    z-index: 2;
+    animation: fade-in-up 1s ease 2s both;
+  }
+
+  .scroll-text {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .scroll-dot {
+    animation: scroll-bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(8px); opacity: 0.3; }
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+  }
+
   @media (max-width: 768px) {
-    .hero-stats {
-      gap: 32px;
-    }
+    .hero-stats { gap: 32px; }
+    .hero-shape-1 { width: 300px; height: 300px; }
+    .hero-shape-2 { width: 200px; height: 200px; }
+    .hero-shape-3, .hero-shape-4 { display: none; }
+    .scroll-indicator { display: none; }
   }
 </style>
 
@@ -164,34 +371,112 @@ const roles = ["Software Engineer", "UI Architect", "Problem Solver", "Open Sour
     const canvas = document.getElementById("particleCanvas");
     if (canvas) initParticles(canvas);
 
-const roles = ["CS Undergraduate", "Full-Stack Developer", "UI Designer", "Tech Enthusiast"];
+    const roles = ["CS Undergraduate", "Full-Stack Developer", "UI Designer", "Tech Enthusiast"];
     const el = document.getElementById("typingText");
-    if (!el) return;
-
-    let roleIndex = 0, charIndex = 0, isDeleting = false;
-
-    function type() {
-      const current = roles[roleIndex];
-      if (isDeleting) {
-        el.textContent = current.substring(0, charIndex--);
-        if (charIndex < 0) {
-          isDeleting = false;
-          roleIndex = (roleIndex + 1) % roles.length;
-          setTimeout(type, 400);
-          return;
+    if (el) {
+      let roleIndex = 0, charIndex = 0, isDeleting = false;
+      function type() {
+        const current = roles[roleIndex];
+        if (isDeleting) {
+          el.textContent = current.substring(0, charIndex--);
+          if (charIndex < 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            setTimeout(type, 400);
+            return;
+          }
+          setTimeout(type, 30);
+        } else {
+          el.textContent = current.substring(0, charIndex++);
+          if (charIndex > current.length) {
+            isDeleting = true;
+            setTimeout(type, 2200);
+            return;
+          }
+          setTimeout(type, 60);
         }
-        setTimeout(type, 30);
-      } else {
-        el.textContent = current.substring(0, charIndex++);
-        if (charIndex > current.length) {
-          isDeleting = true;
-          setTimeout(type, 2000);
-          return;
-        }
-        setTimeout(type, 60);
       }
+      type();
     }
 
-    type();
+    const tilt = document.getElementById("heroTilt");
+    if (tilt) {
+      let tiltTimeout;
+      const maxTilt = 6;
+      const content = tilt.querySelector(".hero-content");
+      tilt.addEventListener("mousemove", (e) => {
+        const rect = tilt.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const tiltX = (y - 0.5) * maxTilt;
+        const tiltY = (0.5 - x) * maxTilt;
+        content.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        clearTimeout(tiltTimeout);
+        tiltTimeout = setTimeout(() => {
+          content.style.transform = "rotateX(0deg) rotateY(0deg)";
+        }, 3000);
+      });
+      tilt.addEventListener("mouseleave", () => {
+        content.style.transform = "rotateX(0deg) rotateY(0deg)";
+      });
+    }
+
+    const cursorGlow = document.getElementById("cursorGlow");
+    if (cursorGlow) {
+      let glowTimeout;
+      document.addEventListener("mousemove", (e) => {
+        cursorGlow.style.left = e.clientX + "px";
+        cursorGlow.style.top = e.clientY + "px";
+        cursorGlow.style.opacity = "1";
+        clearTimeout(glowTimeout);
+        glowTimeout = setTimeout(() => {
+          cursorGlow.style.opacity = "0";
+        }, 500);
+      });
+      document.addEventListener("mouseleave", () => {
+        cursorGlow.style.opacity = "0";
+      });
+    }
+
+    document.querySelectorAll(".magnetic-btn").forEach((btn) => {
+      btn.addEventListener("mousemove", (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      });
+      btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "translate(0, 0)";
+      });
+    });
+
+    const counters = document.querySelectorAll(".stat-counter");
+    const statsEl = document.getElementById("heroStats");
+    if (counters.length && statsEl) {
+      let counted = false;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !counted) {
+            counted = true;
+            counters.forEach((counter) => {
+              const target = parseInt(counter.dataset.target);
+              let current = 0;
+              const step = Math.ceil(target / 40);
+              const interval = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                  counter.textContent = target;
+                  clearInterval(interval);
+                } else {
+                  counter.textContent = current;
+                }
+              }, 30);
+            });
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(statsEl);
+    }
   });
 </script>
