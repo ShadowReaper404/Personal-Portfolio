@@ -34,8 +34,8 @@ const categories = [...new Set(projects.map((p) => p.category))];
               {project.tags.map((tag) => <span class="project-tag">{tag}</span>)}
             </div>
             <div class="project-links">
-              {project.url !== "#" && <a href={project.url} class="project-link" target="_blank">Live →</a>}
-              {project.github !== "#" && <a href={project.github} class="project-link" target="_blank">Code →</a>}
+              {project.url && project.url !== "#" && <a href={project.url} class="project-link" target="_blank">Live →</a>}
+              {project.github && project.github !== "#" && <a href={project.github} class="project-link" target="_blank">Code →</a>}
             </div>
           </div>
         </article>
