@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Anora — Mental Health Support",
+    "description": "Landing page for a mental health support application developed as a second-year group project. Connects users with compassionate listeners, trained volunteers, and licensed professionals.",
+    "tags": ["React", "TypeScript", "Vite", "Tailwind"],
+    "category": "web",
+    "image": "",
+    "url": "https://anora-app.com",
+    "github": "https://github.com/ShadowReaper404/anora_Landing_Page"
+  },
+  {
+    "title": "YT Music for Mac",
+    "description": "Polished YouTube Music desktop client for macOS with Discord Rich Presence integration. Electron-based with system tray media controls and persistent login.",
+    "tags": ["Electron", "JavaScript", "Discord RPC", "macOS"],
+    "category": "tools",
+    "image": "",
+    "url": "",
+    "github": "https://github.com/ShadowReaper404/YTMusic-for-Mac"
+  },
+  {
+    "title": "TaskFlow — WSO2 Cloud Tracker",
+    "description": "Cloud-native task tracker using WSO2's full enterprise stack: Asgardeo for auth, Choreo for deployment, Ballerina for backend API, and React for the frontend SPA.",
+    "tags": ["Ballerina", "React", "WSO2", "Asgardeo", "Choreo"],
+    "category": "fullstack",
+    "image": "",
+    "url": "",
+    "github": "https://github.com/ShadowReaper404/Task-Tracker"
+  },
+  {
+    "title": "Smart Campus API",
+    "description": "RESTful API for managing university rooms and IoT sensors across a smart campus. Built with JAX-RS (Jersey), Grizzly HTTP server, and thread-safe in-memory storage.",
+    "tags": ["Java", "JAX-RS", "Jersey", "REST API"],
+    "category": "backend",
+    "image": "",
+    "url": "",
+    "github": "https://github.com/ShadowReaper404/SmartCampusAPI"
+  },
+  {
+    "title": "Traffic Data Analysis Tool",
+    "description": "Python program to process traffic data files and generate statistical reports. Features a Tkinter GUI for data analysis and visualisation of traffic patterns.",
+    "tags": ["Python", "Tkinter", "Data Analysis"],
+    "category": "tools",
+    "image": "",
+    "url": "",
+    "github": ""
+  },
+  {
+    "title": "Life Below Water — UN SDG #14",
+    "description": "Multi-page awareness website for the United Nations Sustainable Development Goal 14. Collaborated with 3 team members — managed global CSS, navbar, and design.",
+    "tags": ["HTML", "CSS", "JavaScript"],
+    "category": "web",
+    "image": "",
+    "url": "",
+    "github": "https://github.com/ShadowReaper404/Life_Below_Water"
+  }
+]

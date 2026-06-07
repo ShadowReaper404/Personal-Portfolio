@@ -1,0 +1,69 @@
+:root {
+  --navy-950: #050812;
+  --navy-900: #0a0e1a;
+  --navy-850: #0d1326;
+  --navy-800: #111827;
+  --navy-750: #162032;
+  --navy-700: #1e293b;
+  --navy-600: #2e3b4e;
+
+  --teal-600: #0d9488;
+  --teal-500: #14b8a6;
+  --teal-400: #2dd4bf;
+  --teal-300: #5eead4;
+  --teal-200: #99f6e4;
+  --teal-100: #ccfbf1;
+
+  --amber-500: #f59e0b;
+  --amber-400: #fbbf24;
+  --amber-300: #fcd34d;
+  --amber-200: #fde68a;
+
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+
+  --white: #ffffff;
+  --black: #020617;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --bg-primary: var(--navy-900);
+  --bg-secondary: var(--navy-800);
+  --bg-card: var(--navy-750);
+  --bg-card-hover: var(--navy-700);
+  --text-primary: var(--slate-100);
+  --text-secondary: var(--slate-300);
+  --text-muted: var(--slate-500);
+  --accent: var(--teal-500);
+  --accent-hover: var(--teal-400);
+  --accent-dim: var(--teal-600);
+  --accent-secondary: var(--amber-400);
+  --accent-secondary-hover: var(--amber-300);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-light: rgba(255, 255, 255, 0.1);
+  --glow: var(--teal-500);
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #94a3b8;
+  --border: rgba(0, 0, 0, 0.06);
+  --border-light: rgba(0, 0, 0, 0.1);
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "role": "B.Sc. (Hons) Computer Science",
+    "company": "University of Westminster, UK (IIT Sri Lanka)",
+    "period": "2024 — Present",
+    "description": "Second-year undergraduate. Modules include software development, web design, and development. Anticipated graduation: 2028.",
+    "highlights": [
+      "Professional Qualification in Machine Learning (IIT, 2025)",
+      "Member — IEEE Computer Society Student Branch Chapter of IIT",
+      "A/L: Logic & Scientific Method — B, French — B, ICT — B"
+    ]
+  },
+  {
+    "role": "BA (Hons) Business Management and Leadership",
+    "company": "National Institute of Business Management, Colombo 07",
+    "period": "2022 — Present",
+    "description": "Final-year undergraduate. Modules include Marketing Management, HRM, Business Finance, Project Management, Operations & Logistics, and Environmental Management. Anticipated graduation: 2026.",
+    "highlights": [
+      "Level 4 CIM qualifications with distinctions in Social Media Marketing, Planning Integrated Campaigns, and Digital Marketing",
+      "Member — Chartered Institute of Marketing (CIM)",
+      "Currently at Level 5 of the CIM qualification"
+    ]
+  },
+  {
+    "role": "Advanced Certificate in Digital Banking and FinTech",
+    "company": "National Institute of Business Management, Colombo 07",
+    "period": "2021",
+    "description": "Researched digital currencies, modern banking security threats, and exploit patterns using Metasploit against financial APIs and legacy banking infrastructure.",
+    "highlights": []
+  },
+  {
+    "role": "Diploma in Information and Communication Technology",
+    "company": "ESOFT Metro Campus",
+    "period": "2020 — 2021",
+    "description": "Acquired foundational knowledge in C#, HTML, and CSS.",
+    "highlights": []
+  }
+]

@@ -1,0 +1,145 @@
+---
+import skills from "../data/skills.json";
+
+const categories = [...new Set(skills.map((s) => s.category))];
+---
+
+<section class="section" id="skills">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Skills & expertise</span>
+      <h2 class="section-title">Tools I use daily</h2>
+    </div>
+
+    {categories.map((cat) => (
+      <div class="skill-category reveal">
+        <h3 class="skill-cat-title">{cat.charAt(0).toUpperCase() + cat.slice(1)}</h3>
+        <div class="skill-grid">
+          {skills.filter((s) => s.category === cat).map((skill) => (
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">{skill.name}</span>
+                <span class="skill-level">{skill.level}%</span>
+              </div>
+              <div class="skill-bar">
+                <div
+                  class="skill-bar-fill"
+                  data-width={skill.level}
+                  style="width: 0%"
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <div class="skill-tags reveal">
+      <h3 class="skill-cat-title">Also experienced with</h3>
+      <div class="tags-cloud">
+        {["GraphQL", "Redis", "Kubernetes", "Figma", "Webpack", "Vite", "Jest", "Playwright", "Kafka", "MongoDB", "tRPC", "Prisma"].map(
+          (tag) => <span class="tag">{tag}</span>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .skill-category {
+    margin-top: 48px;
+  }
+
+  .skill-cat-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    text-transform: capitalize;
+  }
+
+  .skill-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .skill-item {
+    padding: 20px;
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+  }
+
+  .skill-item:hover {
+    border-color: var(--accent-dim);
+    background: var(--bg-card-hover);
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .skill-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .skill-level {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+  }
+
+  .skill-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--navy-700);
+    overflow: hidden;
+  }
+
+  [data-theme="light"] .skill-bar {
+    background: #e2e8f0;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  }
+
+  .skill-tags {
+    margin-top: 60px;
+  }
+
+  .tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .tag {
+    padding: 8px 18px;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    transition: all var(--transition);
+  }
+
+  .tag:hover {
+    border-color: var(--accent-dim);
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .skill-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

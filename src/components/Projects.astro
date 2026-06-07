@@ -1,0 +1,172 @@
+---
+import projects from "../data/projects.json";
+
+const categories = [...new Set(projects.map((p) => p.category))];
+---
+
+<section class="section" id="projects">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Portfolio</span>
+      <h2 class="section-title">Selected projects</h2>
+      <p class="section-subtitle" style="margin-bottom: 40px;">
+        A collection of things I've built — from enterprise platforms to side experiments.
+      </p>
+    </div>
+
+    <div class="project-filters reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      {categories.map((cat) => (
+        <button class="filter-btn" data-filter={cat}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</button>
+      ))}
+    </div>
+
+    <div class="project-grid" id="projectGrid">
+      {projects.map((project) => (
+        <article class="project-card reveal" data-category={project.category}>
+          <div class="project-image glass">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--accent); opacity: 0.5;"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">{project.title}</h3>
+            <p class="project-desc">{project.description}</p>
+            <div class="project-tags">
+              {project.tags.map((tag) => <span class="project-tag">{tag}</span>)}
+            </div>
+            <div class="project-links">
+              {project.url !== "#" && <a href={project.url} class="project-link" target="_blank">Live →</a>}
+              {project.github !== "#" && <a href={project.github} class="project-link" target="_blank">Code →</a>}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .project-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .filter-btn {
+    padding: 8px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--border-light);
+    color: var(--text-muted);
+    transition: all var(--transition);
+    background: transparent;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--accent-dim);
+    color: var(--text-primary);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .project-image {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-body {
+    padding: 24px;
+  }
+
+  .project-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .project-tag {
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.7rem;
+    font-weight: 500;
+    background: rgba(20, 184, 166, 0.08);
+    color: var(--accent);
+    border: 1px solid rgba(20, 184, 166, 0.15);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .project-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    transition: color var(--transition);
+  }
+
+  .project-link:hover {
+    color: var(--accent-hover);
+  }
+
+  @media (max-width: 768px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const filters = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".project-card");
+
+    filters.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filters.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.dataset.filter;
+        cards.forEach((card) => {
+          if (filter === "all" || card.dataset.category === filter) {
+            card.style.display = "block";
+            card.style.animation = "scale-in 0.3s ease";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  });
+</script>

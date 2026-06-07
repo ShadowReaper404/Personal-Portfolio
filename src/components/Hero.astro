@@ -1,0 +1,197 @@
+---
+
+const roles = ["Software Engineer", "UI Architect", "Problem Solver", "Open Source Contributor"];
+---
+
+<section class="hero" id="hero">
+  <canvas id="particleCanvas" class="particle-canvas"></canvas>
+  <div class="container hero-content">
+    <div class="hero-badge reveal">Available for opportunities</div>
+    <h1 class="hero-name reveal reveal-delay-1">
+      Thevindu<br />
+      <span class="gradient-text">Sithujaya</span>
+    </h1>
+    <p class="hero-title reveal reveal-delay-2">
+      <span class="typing-wrapper">
+        <span class="typing-text" id="typingText"></span>
+        <span class="typing-cursor">|</span>
+      </span>
+    </p>
+    <p class="hero-desc reveal reveal-delay-3">
+      Computer Science undergraduate passionate about building performant, human-centered digital experiences. From full-stack apps to elegant interfaces — I turn ideas into reality.
+    </p>
+    <div class="hero-cta reveal reveal-delay-4">
+      <a href="#projects" class="btn btn-primary">
+        View my work
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="btn btn-outline">Get in touch</a>
+    </div>
+    <div class="hero-stats reveal reveal-delay-4">
+      <div class="stat"><span class="stat-num">2</span><span class="stat-label">Degrees in Progress</span></div>
+      <div class="stat"><span class="stat-num">7+</span><span class="stat-label">Projects Built</span></div>
+      <div class="stat"><span class="stat-num">5</span><span class="stat-label">Certifications</span></div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particle-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 80px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(20, 184, 166, 0.2);
+    background: rgba(20, 184, 166, 0.06);
+    margin-bottom: 32px;
+  }
+
+  .hero-badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .hero-name {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+
+  .hero-title {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    min-height: 1.8em;
+  }
+
+  .typing-wrapper {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .typing-cursor {
+    animation: blink 0.8s step-end infinite;
+    color: var(--accent);
+    margin-left: 2px;
+    font-weight: 300;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    .hero-stats {
+      gap: 32px;
+    }
+  }
+</style>
+
+<script>
+  import { initParticles } from "../scripts/particles.js";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById("particleCanvas");
+    if (canvas) initParticles(canvas);
+
+const roles = ["CS Undergraduate", "Full-Stack Developer", "UI Designer", "Tech Enthusiast"];
+    const el = document.getElementById("typingText");
+    if (!el) return;
+
+    let roleIndex = 0, charIndex = 0, isDeleting = false;
+
+    function type() {
+      const current = roles[roleIndex];
+      if (isDeleting) {
+        el.textContent = current.substring(0, charIndex--);
+        if (charIndex < 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+          setTimeout(type, 400);
+          return;
+        }
+        setTimeout(type, 30);
+      } else {
+        el.textContent = current.substring(0, charIndex++);
+        if (charIndex > current.length) {
+          isDeleting = true;
+          setTimeout(type, 2000);
+          return;
+        }
+        setTimeout(type, 60);
+      }
+    }
+
+    type();
+  });
+</script>

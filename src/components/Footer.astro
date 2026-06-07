@@ -1,0 +1,108 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-mark gradient-text">TS</span>
+        <p class="footer-desc">
+          Building digital experiences with purpose and precision.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4 class="footer-heading">Navigate</h4>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4 class="footer-heading">Online</h4>
+        <a href="https://github.com/ShadowReaper404" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/thevindusithujaya" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {year} Thevindu Sithujaya. All rights reserved.</p>
+      <p class="footer-made">Built with Astro + ❤</p>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  .footer {
+    padding: 60px 0 32px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    max-width: 280px;
+    line-height: 1.6;
+  }
+
+  .footer-heading {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    transition: color var(--transition);
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .footer-made {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+</style>

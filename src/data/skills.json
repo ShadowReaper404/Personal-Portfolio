@@ -1,0 +1,16 @@
+[
+  { "name": "Python", "level": 80, "category": "backend" },
+  { "name": "Java", "level": 70, "category": "backend" },
+  { "name": "React / TypeScript", "level": 82, "category": "frontend" },
+  { "name": "Vite / Tailwind", "level": 80, "category": "frontend" },
+  { "name": "PostgreSQL", "level": 68, "category": "backend" },
+  { "name": "PHP", "level": 60, "category": "backend" },
+  { "name": "Node.js", "level": 70, "category": "backend" },
+  { "name": "Docker", "level": 65, "category": "devops" },
+  { "name": "Git", "level": 80, "category": "devops" },
+  { "name": "Wireshark", "level": 60, "category": "security" },
+  { "name": "Metasploit", "level": 55, "category": "security" },
+  { "name": "Burp Suite", "level": 55, "category": "security" },
+  { "name": "Figma", "level": 72, "category": "design" },
+  { "name": "Canva", "level": 78, "category": "design" }
+]

@@ -1,0 +1,105 @@
+---
+import meImage from "../assets/me.jpg";
+---
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="section-label">About me</span>
+        <h2 class="section-title">
+          Crafting code with <span class="gradient-text">purpose</span>
+        </h2>
+        <p class="section-subtitle" style="margin-bottom: 20px;">
+          Dedicated second-year Computer Science undergraduate (University of Westminster)
+          concurrently pursuing a BA (Hons) in Business Management and Leadership (NIBM).
+          Seeking an internship or entry-level opportunity where I can apply my skills in 
+          organisation, communication, problem-solving, and technical knowledge.
+        </p>
+        <p class="section-subtitle" style="margin-bottom: 28px;">
+          Passionate about team collaboration, strategic thinking, and the integration of 
+          technology in management. I aim to contribute to a dynamic organisation while 
+          gaining practical experience.
+        </p>
+        <div class="about-links" style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="/cv.pdf" class="btn btn-primary" download>
+            Download CV (PDF)
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m7-7v10m0 0-4-4m4 4 4-4"/></svg>
+          </a>
+        </div>
+          Download Resume
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m7-7v10m0 0-4-4m4 4 4-4"/></svg>
+        </a>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <div class="about-image-frame">
+          <div class="about-image-placeholder glass" style="overflow: hidden; padding: 0;">
+            <img src={meImage.src} alt="Thevindu Sithujaya" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+          </div>
+          <div class="about-decor about-decor-1"></div>
+          <div class="about-decor about-decor-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-image-frame {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .about-image-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-decor {
+    position: absolute;
+    border-radius: var(--radius);
+    z-index: -1;
+  }
+
+  .about-decor-1 {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--accent), transparent);
+    opacity: 0.15;
+    top: -20px;
+    right: -20px;
+  }
+
+  .about-decor-2 {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent-secondary), transparent);
+    opacity: 0.12;
+    bottom: -15px;
+    left: -15px;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .about-visual {
+      order: -1;
+    }
+  }
+</style>

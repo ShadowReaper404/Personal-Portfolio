@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const posts = Object.values(import.meta.glob("../../content/blog/*.md", { eager: true }));
+posts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+---
+
+<BaseLayout title="Blog — Thevindu Sithujaya">
+  <Header />
+  <main style="padding-top: 120px;">
+    <section class="section">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-label">Blog</span>
+          <h1 class="section-title">All articles</h1>
+          <p class="section-subtitle">Thoughts on frontend architecture, design systems, and building better software.</p>
+        </div>
+
+        <div class="blog-list" style="margin-top: 48px;">
+          {
+            posts.map((post, i) => (
+              <a href={`/blog/${post.frontmatter.slug}`} class="blog-list-item reveal" style={`transition-delay: ${i * 0.05}s`}>
+                <span class="blog-list-date">{post.frontmatter.date}</span>
+                <div class="blog-list-content">
+                  <h2 class="blog-list-title">{post.frontmatter.title}</h2>
+                  <p class="blog-list-excerpt">{post.frontmatter.excerpt}</p>
+                  <div class="blog-tags">
+                    {post.frontmatter.tags?.map((tag) => <span class="blog-tag">{tag}</span>)}
+                  </div>
+                </div>
+                <span class="blog-list-arrow">→</span>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="blog-empty" style="display: none;">
+          <p>No articles yet. Check back soon!</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

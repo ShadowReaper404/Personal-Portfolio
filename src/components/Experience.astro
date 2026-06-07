@@ -1,0 +1,149 @@
+---
+import experience from "../data/experience.json";
+---
+
+<section class="section" id="experience">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Career</span>
+      <h2 class="section-title">Where I've worked</h2>
+    </div>
+
+    <div class="timeline">
+      {experience.map((item, i) => (
+        <div class="timeline-item reveal" style="transition-delay: ${i * 0.1}s">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass">
+            <div class="timeline-header">
+              <h3 class="timeline-role">{item.role}</h3>
+              <span class="timeline-company">{item.company}</span>
+            </div>
+            <span class="timeline-period">{item.period}</span>
+            <p class="timeline-desc">{item.description}</p>
+            <ul class="timeline-highlights">
+              {item.highlights.map((h) => (
+                <li class="timeline-highlight">{h}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin-top: 60px;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent-secondary), transparent);
+    opacity: 0.3;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -26px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--bg-primary);
+    box-shadow: 0 0 0 2px var(--accent-dim);
+  }
+
+  .timeline-card {
+    padding: 28px;
+    border-radius: var(--radius);
+  }
+
+  .timeline-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .timeline-role {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--text-primary);
+  }
+
+  .timeline-company {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .timeline-period {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    background: rgba(20, 184, 166, 0.06);
+    border: 1px solid rgba(20, 184, 166, 0.12);
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .timeline-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .timeline-highlight {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .timeline-highlight::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .timeline {
+      padding-left: 24px;
+    }
+    .timeline-dot {
+      left: -20px;
+    }
+  }
+</style>
