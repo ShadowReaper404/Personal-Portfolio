@@ -132,26 +132,31 @@ export function initParticles(canvas) {
     createParticles();
   });
 
-  const onMove = (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
+  document.addEventListener("mousemove", (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY + window.scrollY;
     mouse.active = true;
-  };
+  });
 
-  canvas.addEventListener("mousemove", onMove);
-  canvas.addEventListener("touchmove", (e) => {
+  document.addEventListener("touchmove", (e) => {
     const touch = e.touches[0];
     if (touch) {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = touch.clientX - rect.left;
-      mouse.y = touch.clientY - rect.top;
+      mouse.x = touch.clientX;
+      mouse.y = touch.clientY + window.scrollY;
       mouse.active = true;
     }
   });
 
-  canvas.addEventListener("mouseleave", () => { mouse.active = false; });
-  canvas.addEventListener("touchend", () => { mouse.active = false; });
+  document.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    if (touch) {
+      mouse.x = touch.clientX;
+      mouse.y = touch.clientY + window.scrollY;
+      mouse.active = true;
+    }
+  });
+
+
 
   draw();
 
